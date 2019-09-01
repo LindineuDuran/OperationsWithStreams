@@ -98,56 +98,56 @@ public class ProcessCenter
 			e1.printStackTrace();
 		}
 
-//		// =======================================================================
-//		// Example of Select in Stream () Generating Output in CSV. It receives a
-//		// List<C420>
-//		// =======================================================================
-//		lstResult = sql.selectCsv(objectListC420);
-//		System.out.println("Shows the result of select in a List<C420>!");
-//		lst.imprimeLista(lstResult);
-//
-//		System.out.print("Aperte qualquer tecla: ");
-//		try
-//		{
-//			operacao = leOperacao();
-//		}
-//		catch (NumberFormatException | IOException e1)
-//		{
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//
-//		// ======================================================================
-//		// Example of Select in Stream () Generating Output in CSV. It receives a
-//		// List<C490>
-//		// ======================================================================
-//		lstResult = sql.selectCsvC490(objectListC490);
-//		System.out.println("Shows the result of select in a List<C490>!");
-//		lst.imprimeLista(lstResult);
-//
-//		// ==================================
-//		// Saves the lstResult in a text file
-//		// ==================================
-//		try
-//		{
-//			// remember to change the file path
-//			fh.writeStream("C:\\GitHub\\OperationsWithStreams\\ResultadoC490Processada.txt", lstResult);
-//		}
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
-//
-//		System.out.print("Aperte qualquer tecla: ");
-//		try
-//		{
-//			operacao = leOperacao();
-//		}
-//		catch (NumberFormatException | IOException e1)
-//		{
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+		// =======================================================================
+		// Example of Select in Stream () Generating Output in CSV. It receives a
+		// List<C420>
+		// =======================================================================
+		lstResult = sql.selectCsv(objectListC420);
+		System.out.println("Shows the result of select in a List<C420>!");
+		lst.imprimeLista(lstResult);
+
+		System.out.print("Aperte qualquer tecla: ");
+		try
+		{
+			operacao = leOperacao();
+		}
+		catch (NumberFormatException | IOException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		// ======================================================================
+		// Example of Select in Stream () Generating Output in CSV. It receives a
+		// List<C490>
+		// ======================================================================
+		lstResult = sql.selectCsvC490(objectListC490);
+		System.out.println("Shows the result of select in a List<C490>!");
+		lst.imprimeLista(lstResult);
+
+		// ==================================
+		// Saves the lstResult in a text file
+		// ==================================
+		try
+		{
+			// remember to change the file path
+			fh.writeStream("C:\\GitHub\\OperationsWithStreams\\ResultadoC490Processada.txt", lstResult);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		System.out.print("Aperte qualquer tecla: ");
+		try
+		{
+			operacao = leOperacao();
+		}
+		catch (NumberFormatException | IOException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		// =======================================================
 		// Example of Where in Stream () Generating Output in CSV.

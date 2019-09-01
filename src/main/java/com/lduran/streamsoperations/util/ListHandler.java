@@ -1,4 +1,4 @@
-package com.lduran.streamsoperations.features;
+package com.lduran.streamsoperations.util;
 
 import java.util.LinkedList;
 import java.util.List;
