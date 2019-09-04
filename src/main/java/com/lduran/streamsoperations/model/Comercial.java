@@ -1,7 +1,5 @@
 package com.lduran.streamsoperations.model;
 
-import java.math.BigDecimal;
-
 public class Comercial
 {
 	private String organizacao = "";
@@ -23,7 +21,7 @@ public class Comercial
 	private String CFOP = "";
 	private String dataEmissao = "";
 	private String dataMovimento = "";
-	private BigDecimal valorTotalNFe = new BigDecimal(0);
+	private Double valorTotalNFe = 0.0;
 	private String operacao = "";
 	private String natOp = "";
 	private String emissao = "";
@@ -33,7 +31,7 @@ public class Comercial
 	private String cstCOFINS = "";
 	private String cstPIS = "";
 	private String modBC = "";
-	private BigDecimal tributacaoTotal = new BigDecimal(0);
+	private Double tributacaoTotal = 0.0;
 	private String pagamento = "";
 	private String modFrete = "";
 	private String sufixoCFOP = "";
@@ -41,42 +39,42 @@ public class Comercial
 	private String tipoDocumento = "";
 	private String itemPedidoVenda = "";
 	private Double quantidade = 0.0;
-	private BigDecimal precoTabela = new BigDecimal(0);
-	private BigDecimal totalTabela = new BigDecimal(0);
-	private BigDecimal precoUnitario = new BigDecimal(0);
-	private BigDecimal valorTotal = new BigDecimal(0);
+	private Double precoTabela = 0.0;
+	private Double totalTabela = 0.0;
+	private Double precoUnitario = 0.0;
+	private Double valorTotal = 0.0;
 	private Double percentualDesconto = 0.0;
-	private BigDecimal desconto = new BigDecimal(0);
-	private BigDecimal valorICMS = new BigDecimal(0);
-	private BigDecimal valorIPI = new BigDecimal(0);
-	private BigDecimal valorCOFINS = new BigDecimal(0);
-	private BigDecimal valorPIS = new BigDecimal(0);
-	private BigDecimal valorICMSST = new BigDecimal(0);
-	private BigDecimal valorPISST = new BigDecimal(0);
-	private BigDecimal valorCOFINSST = new BigDecimal(0);
-	private BigDecimal baseICMS = new BigDecimal(0);
-	private BigDecimal baseICMSST = new BigDecimal(0);
-	private BigDecimal baseIPI = new BigDecimal(0);
-	private BigDecimal baseCOFINS = new BigDecimal(0);
-	private BigDecimal basePIS = new BigDecimal(0);
-	private BigDecimal redBaseCalculo = new BigDecimal(0);
+	private Double desconto = 0.0;
+	private Double valorICMS = 0.0;
+	private Double valorIPI = 0.0;
+	private Double valorCOFINS = 0.0;
+	private Double valorPIS = 0.0;
+	private Double valorICMSST = 0.0;
+	private Double valorPISST = 0.0;
+	private Double valorCOFINSST = 0.0;
+	private Double baseICMS = 0.0;
+	private Double baseICMSST = 0.0;
+	private Double baseIPI = 0.0;
+	private Double baseCOFINS = 0.0;
+	private Double basePIS = 0.0;
+	private Double redBaseCalculo = 0.0;
 	private Double aliquotaICMS = 0.0;
 	private Double aliquotaRedBC = 0.0;
 	private Double aliquotaIPI = 0.0;
 	private Double aliquotaCOFINS = 0.0;
 	private Double aliquotaPIS = 0.0;
 	private Double aliquotaICMSST = 0.0;
-	private BigDecimal frete = new BigDecimal(0);
-	private BigDecimal seguro = new BigDecimal(0);
-	private BigDecimal outrasDespesas = new BigDecimal(0);
-	private BigDecimal custo = new BigDecimal(0);
+	private Double frete = 0.0;
+	private Double seguro = 0.0;
+	private Double outrasDespesas = 0.0;
+	private Double custo = 0.0;
 
 	/**
 	 * @return the organizacao
 	 */
 	public String getOrganizacao()
 	{
-		return organizacao;
+		return this.organizacao;
 	}
 
 	/**
@@ -92,7 +90,7 @@ public class Comercial
 	 */
 	public String getParticipante()
 	{
-		return participante;
+		return this.participante;
 	}
 
 	/**
@@ -108,7 +106,7 @@ public class Comercial
 	 */
 	public String getTransportador()
 	{
-		return transportador;
+		return this.transportador;
 	}
 
 	/**
@@ -124,7 +122,7 @@ public class Comercial
 	 */
 	public String getIdOperacao()
 	{
-		return idOperacao;
+		return this.idOperacao;
 	}
 
 	/**
@@ -140,7 +138,7 @@ public class Comercial
 	 */
 	public String getStatus()
 	{
-		return status;
+		return this.status;
 	}
 
 	/**
@@ -156,7 +154,7 @@ public class Comercial
 	 */
 	public String getModelo()
 	{
-		return modelo;
+		return this.modelo;
 	}
 
 	/**
@@ -172,7 +170,7 @@ public class Comercial
 	 */
 	public String getSituacao()
 	{
-		return situacao;
+		return this.situacao;
 	}
 
 	/**
@@ -188,7 +186,7 @@ public class Comercial
 	 */
 	public String getVendedor()
 	{
-		return vendedor;
+		return this.vendedor;
 	}
 
 	/**
@@ -204,7 +202,7 @@ public class Comercial
 	 */
 	public String getGrupoProduto()
 	{
-		return grupoProduto;
+		return this.grupoProduto;
 	}
 
 	/**
@@ -220,7 +218,7 @@ public class Comercial
 	 */
 	public String getTipoProduto()
 	{
-		return tipoProduto;
+		return this.tipoProduto;
 	}
 
 	/**
@@ -236,7 +234,7 @@ public class Comercial
 	 */
 	public String getFamiliaProduto()
 	{
-		return familiaProduto;
+		return this.familiaProduto;
 	}
 
 	/**
@@ -252,7 +250,7 @@ public class Comercial
 	 */
 	public String getCodiMunicipio()
 	{
-		return codiMunicipio;
+		return this.codiMunicipio;
 	}
 
 	/**
@@ -268,7 +266,7 @@ public class Comercial
 	 */
 	public String getCep()
 	{
-		return cep;
+		return this.cep;
 	}
 
 	/**
@@ -284,7 +282,7 @@ public class Comercial
 	 */
 	public String getCondicaoPgto()
 	{
-		return condicaoPgto;
+		return this.condicaoPgto;
 	}
 
 	/**
@@ -300,7 +298,7 @@ public class Comercial
 	 */
 	public String getPedidoVenda()
 	{
-		return pedidoVenda;
+		return this.pedidoVenda;
 	}
 
 	/**
@@ -316,7 +314,7 @@ public class Comercial
 	 */
 	public String getProduto()
 	{
-		return produto;
+		return this.produto;
 	}
 
 	/**
@@ -332,7 +330,7 @@ public class Comercial
 	 */
 	public String getCFOP()
 	{
-		return CFOP;
+		return this.CFOP;
 	}
 
 	/**
@@ -340,7 +338,7 @@ public class Comercial
 	 */
 	public void setCFOP(String cFOP)
 	{
-		CFOP = cFOP;
+		this.CFOP = cFOP;
 	}
 
 	/**
@@ -348,7 +346,7 @@ public class Comercial
 	 */
 	public String getDataEmissao()
 	{
-		return dataEmissao;
+		return this.dataEmissao;
 	}
 
 	/**
@@ -364,7 +362,7 @@ public class Comercial
 	 */
 	public String getDataMovimento()
 	{
-		return dataMovimento;
+		return this.dataMovimento;
 	}
 
 	/**
@@ -378,15 +376,15 @@ public class Comercial
 	/**
 	 * @return the valorTotalNFe
 	 */
-	public BigDecimal getValorTotalNFe()
+	public Double getValorTotalNFe()
 	{
-		return valorTotalNFe;
+		return this.valorTotalNFe;
 	}
 
 	/**
 	 * @param valorTotalNFe the valorTotalNFe to set
 	 */
-	public void setValorTotalNFe(BigDecimal valorTotalNFe)
+	public void setValorTotalNFe(Double valorTotalNFe)
 	{
 		this.valorTotalNFe = valorTotalNFe;
 	}
@@ -396,7 +394,7 @@ public class Comercial
 	 */
 	public String getOperacao()
 	{
-		return operacao;
+		return this.operacao;
 	}
 
 	/**
@@ -412,7 +410,7 @@ public class Comercial
 	 */
 	public String getNatOp()
 	{
-		return natOp;
+		return this.natOp;
 	}
 
 	/**
@@ -428,7 +426,7 @@ public class Comercial
 	 */
 	public String getEmissao()
 	{
-		return emissao;
+		return this.emissao;
 	}
 
 	/**
@@ -444,7 +442,7 @@ public class Comercial
 	 */
 	public String getcEnq()
 	{
-		return cEnq;
+		return this.cEnq;
 	}
 
 	/**
@@ -460,7 +458,7 @@ public class Comercial
 	 */
 	public String getCstIPI()
 	{
-		return cstIPI;
+		return this.cstIPI;
 	}
 
 	/**
@@ -476,7 +474,7 @@ public class Comercial
 	 */
 	public String getCstICMS()
 	{
-		return cstICMS;
+		return this.cstICMS;
 	}
 
 	/**
@@ -492,7 +490,7 @@ public class Comercial
 	 */
 	public String getCstCOFINS()
 	{
-		return cstCOFINS;
+		return this.cstCOFINS;
 	}
 
 	/**
@@ -508,7 +506,7 @@ public class Comercial
 	 */
 	public String getCstPIS()
 	{
-		return cstPIS;
+		return this.cstPIS;
 	}
 
 	/**
@@ -524,7 +522,7 @@ public class Comercial
 	 */
 	public String getModBC()
 	{
-		return modBC;
+		return this.modBC;
 	}
 
 	/**
@@ -538,15 +536,15 @@ public class Comercial
 	/**
 	 * @return the tributacaoTotal
 	 */
-	public BigDecimal getTributacaoTotal()
+	public Double getTributacaoTotal()
 	{
-		return tributacaoTotal;
+		return this.tributacaoTotal;
 	}
 
 	/**
 	 * @param tributacaoTotal the tributacaoTotal to set
 	 */
-	public void setTributacaoTotal(BigDecimal tributacaoTotal)
+	public void setTributacaoTotal(Double tributacaoTotal)
 	{
 		this.tributacaoTotal = tributacaoTotal;
 	}
@@ -556,7 +554,7 @@ public class Comercial
 	 */
 	public String getPagamento()
 	{
-		return pagamento;
+		return this.pagamento;
 	}
 
 	/**
@@ -572,7 +570,7 @@ public class Comercial
 	 */
 	public String getModFrete()
 	{
-		return modFrete;
+		return this.modFrete;
 	}
 
 	/**
@@ -588,7 +586,7 @@ public class Comercial
 	 */
 	public String getSufixoCFOP()
 	{
-		return sufixoCFOP;
+		return this.sufixoCFOP;
 	}
 
 	/**
@@ -604,7 +602,7 @@ public class Comercial
 	 */
 	public String getSatECF()
 	{
-		return satECF;
+		return this.satECF;
 	}
 
 	/**
@@ -620,7 +618,7 @@ public class Comercial
 	 */
 	public String getTipoDocumento()
 	{
-		return tipoDocumento;
+		return this.tipoDocumento;
 	}
 
 	/**
@@ -636,7 +634,7 @@ public class Comercial
 	 */
 	public String getItemPedidoVenda()
 	{
-		return itemPedidoVenda;
+		return this.itemPedidoVenda;
 	}
 
 	/**
@@ -652,7 +650,7 @@ public class Comercial
 	 */
 	public Double getQuantidade()
 	{
-		return quantidade;
+		return this.quantidade;
 	}
 
 	/**
@@ -666,15 +664,15 @@ public class Comercial
 	/**
 	 * @return the precoTabela
 	 */
-	public BigDecimal getPrecoTabela()
+	public Double getPrecoTabela()
 	{
-		return precoTabela;
+		return this.precoTabela;
 	}
 
 	/**
 	 * @param precoTabela the precoTabela to set
 	 */
-	public void setPrecoTabela(BigDecimal precoTabela)
+	public void setPrecoTabela(Double precoTabela)
 	{
 		this.precoTabela = precoTabela;
 	}
@@ -682,15 +680,15 @@ public class Comercial
 	/**
 	 * @return the totalTabela
 	 */
-	public BigDecimal getTotalTabela()
+	public Double getTotalTabela()
 	{
-		return totalTabela;
+		return this.totalTabela;
 	}
 
 	/**
 	 * @param totalTabela the totalTabela to set
 	 */
-	public void setTotalTabela(BigDecimal totalTabela)
+	public void setTotalTabela(Double totalTabela)
 	{
 		this.totalTabela = totalTabela;
 	}
@@ -698,15 +696,15 @@ public class Comercial
 	/**
 	 * @return the precoUnitario
 	 */
-	public BigDecimal getPrecoUnitario()
+	public Double getPrecoUnitario()
 	{
-		return precoUnitario;
+		return this.precoUnitario;
 	}
 
 	/**
 	 * @param precoUnitario the precoUnitario to set
 	 */
-	public void setPrecoUnitario(BigDecimal precoUnitario)
+	public void setPrecoUnitario(Double precoUnitario)
 	{
 		this.precoUnitario = precoUnitario;
 	}
@@ -714,15 +712,15 @@ public class Comercial
 	/**
 	 * @return the valorTotal
 	 */
-	public BigDecimal getValorTotal()
+	public Double getValorTotal()
 	{
-		return valorTotal;
+		return this.valorTotal;
 	}
 
 	/**
 	 * @param valorTotal the valorTotal to set
 	 */
-	public void setValorTotal(BigDecimal valorTotal)
+	public void setValorTotal(Double valorTotal)
 	{
 		this.valorTotal = valorTotal;
 	}
@@ -732,7 +730,7 @@ public class Comercial
 	 */
 	public Double getPercentualDesconto()
 	{
-		return percentualDesconto;
+		return this.percentualDesconto;
 	}
 
 	/**
@@ -746,15 +744,15 @@ public class Comercial
 	/**
 	 * @return the desconto
 	 */
-	public BigDecimal getDesconto()
+	public Double getDesconto()
 	{
-		return desconto;
+		return this.desconto;
 	}
 
 	/**
 	 * @param desconto the desconto to set
 	 */
-	public void setDesconto(BigDecimal desconto)
+	public void setDesconto(Double desconto)
 	{
 		this.desconto = desconto;
 	}
@@ -762,15 +760,15 @@ public class Comercial
 	/**
 	 * @return the valorICMS
 	 */
-	public BigDecimal getValorICMS()
+	public Double getValorICMS()
 	{
-		return valorICMS;
+		return this.valorICMS;
 	}
 
 	/**
 	 * @param valorICMS the valorICMS to set
 	 */
-	public void setValorICMS(BigDecimal valorICMS)
+	public void setValorICMS(Double valorICMS)
 	{
 		this.valorICMS = valorICMS;
 	}
@@ -778,15 +776,15 @@ public class Comercial
 	/**
 	 * @return the valorIPI
 	 */
-	public BigDecimal getValorIPI()
+	public Double getValorIPI()
 	{
-		return valorIPI;
+		return this.valorIPI;
 	}
 
 	/**
 	 * @param valorIPI the valorIPI to set
 	 */
-	public void setValorIPI(BigDecimal valorIPI)
+	public void setValorIPI(Double valorIPI)
 	{
 		this.valorIPI = valorIPI;
 	}
@@ -794,15 +792,15 @@ public class Comercial
 	/**
 	 * @return the valorCOFINS
 	 */
-	public BigDecimal getValorCOFINS()
+	public Double getValorCOFINS()
 	{
-		return valorCOFINS;
+		return this.valorCOFINS;
 	}
 
 	/**
 	 * @param valorCOFINS the valorCOFINS to set
 	 */
-	public void setValorCOFINS(BigDecimal valorCOFINS)
+	public void setValorCOFINS(Double valorCOFINS)
 	{
 		this.valorCOFINS = valorCOFINS;
 	}
@@ -810,15 +808,15 @@ public class Comercial
 	/**
 	 * @return the valorPIS
 	 */
-	public BigDecimal getValorPIS()
+	public Double getValorPIS()
 	{
-		return valorPIS;
+		return this.valorPIS;
 	}
 
 	/**
 	 * @param valorPIS the valorPIS to set
 	 */
-	public void setValorPIS(BigDecimal valorPIS)
+	public void setValorPIS(Double valorPIS)
 	{
 		this.valorPIS = valorPIS;
 	}
@@ -826,15 +824,15 @@ public class Comercial
 	/**
 	 * @return the valorICMSST
 	 */
-	public BigDecimal getValorICMSST()
+	public Double getValorICMSST()
 	{
-		return valorICMSST;
+		return this.valorICMSST;
 	}
 
 	/**
 	 * @param valorICMSST the valorICMSST to set
 	 */
-	public void setValorICMSST(BigDecimal valorICMSST)
+	public void setValorICMSST(Double valorICMSST)
 	{
 		this.valorICMSST = valorICMSST;
 	}
@@ -842,15 +840,15 @@ public class Comercial
 	/**
 	 * @return the valorPISST
 	 */
-	public BigDecimal getValorPISST()
+	public Double getValorPISST()
 	{
-		return valorPISST;
+		return this.valorPISST;
 	}
 
 	/**
 	 * @param valorPISST the valorPISST to set
 	 */
-	public void setValorPISST(BigDecimal valorPISST)
+	public void setValorPISST(Double valorPISST)
 	{
 		this.valorPISST = valorPISST;
 	}
@@ -858,15 +856,15 @@ public class Comercial
 	/**
 	 * @return the valorCOFINSST
 	 */
-	public BigDecimal getValorCOFINSST()
+	public Double getValorCOFINSST()
 	{
-		return valorCOFINSST;
+		return this.valorCOFINSST;
 	}
 
 	/**
 	 * @param valorCOFINSST the valorCOFINSST to set
 	 */
-	public void setValorCOFINSST(BigDecimal valorCOFINSST)
+	public void setValorCOFINSST(Double valorCOFINSST)
 	{
 		this.valorCOFINSST = valorCOFINSST;
 	}
@@ -874,15 +872,15 @@ public class Comercial
 	/**
 	 * @return the baseICMS
 	 */
-	public BigDecimal getBaseICMS()
+	public Double getBaseICMS()
 	{
-		return baseICMS;
+		return this.baseICMS;
 	}
 
 	/**
 	 * @param baseICMS the baseICMS to set
 	 */
-	public void setBaseICMS(BigDecimal baseICMS)
+	public void setBaseICMS(Double baseICMS)
 	{
 		this.baseICMS = baseICMS;
 	}
@@ -890,15 +888,15 @@ public class Comercial
 	/**
 	 * @return the baseICMSST
 	 */
-	public BigDecimal getBaseICMSST()
+	public Double getBaseICMSST()
 	{
-		return baseICMSST;
+		return this.baseICMSST;
 	}
 
 	/**
 	 * @param baseICMSST the baseICMSST to set
 	 */
-	public void setBaseICMSST(BigDecimal baseICMSST)
+	public void setBaseICMSST(Double baseICMSST)
 	{
 		this.baseICMSST = baseICMSST;
 	}
@@ -906,15 +904,15 @@ public class Comercial
 	/**
 	 * @return the baseIPI
 	 */
-	public BigDecimal getBaseIPI()
+	public Double getBaseIPI()
 	{
-		return baseIPI;
+		return this.baseIPI;
 	}
 
 	/**
 	 * @param baseIPI the baseIPI to set
 	 */
-	public void setBaseIPI(BigDecimal baseIPI)
+	public void setBaseIPI(Double baseIPI)
 	{
 		this.baseIPI = baseIPI;
 	}
@@ -922,15 +920,15 @@ public class Comercial
 	/**
 	 * @return the baseCOFINS
 	 */
-	public BigDecimal getBaseCOFINS()
+	public Double getBaseCOFINS()
 	{
-		return baseCOFINS;
+		return this.baseCOFINS;
 	}
 
 	/**
 	 * @param baseCOFINS the baseCOFINS to set
 	 */
-	public void setBaseCOFINS(BigDecimal baseCOFINS)
+	public void setBaseCOFINS(Double baseCOFINS)
 	{
 		this.baseCOFINS = baseCOFINS;
 	}
@@ -938,15 +936,15 @@ public class Comercial
 	/**
 	 * @return the basePIS
 	 */
-	public BigDecimal getBasePIS()
+	public Double getBasePIS()
 	{
-		return basePIS;
+		return this.basePIS;
 	}
 
 	/**
 	 * @param basePIS the basePIS to set
 	 */
-	public void setBasePIS(BigDecimal basePIS)
+	public void setBasePIS(Double basePIS)
 	{
 		this.basePIS = basePIS;
 	}
@@ -954,15 +952,15 @@ public class Comercial
 	/**
 	 * @return the redBaseCalculo
 	 */
-	public BigDecimal getRedBaseCalculo()
+	public Double getRedBaseCalculo()
 	{
-		return redBaseCalculo;
+		return this.redBaseCalculo;
 	}
 
 	/**
 	 * @param redBaseCalculo the redBaseCalculo to set
 	 */
-	public void setRedBaseCalculo(BigDecimal redBaseCalculo)
+	public void setRedBaseCalculo(Double redBaseCalculo)
 	{
 		this.redBaseCalculo = redBaseCalculo;
 	}
@@ -972,7 +970,7 @@ public class Comercial
 	 */
 	public Double getAliquotaICMS()
 	{
-		return aliquotaICMS;
+		return this.aliquotaICMS;
 	}
 
 	/**
@@ -988,7 +986,7 @@ public class Comercial
 	 */
 	public Double getAliquotaRedBC()
 	{
-		return aliquotaRedBC;
+		return this.aliquotaRedBC;
 	}
 
 	/**
@@ -1004,7 +1002,7 @@ public class Comercial
 	 */
 	public Double getAliquotaIPI()
 	{
-		return aliquotaIPI;
+		return this.aliquotaIPI;
 	}
 
 	/**
@@ -1020,7 +1018,7 @@ public class Comercial
 	 */
 	public Double getAliquotaCOFINS()
 	{
-		return aliquotaCOFINS;
+		return this.aliquotaCOFINS;
 	}
 
 	/**
@@ -1036,7 +1034,7 @@ public class Comercial
 	 */
 	public Double getAliquotaPIS()
 	{
-		return aliquotaPIS;
+		return this.aliquotaPIS;
 	}
 
 	/**
@@ -1052,7 +1050,7 @@ public class Comercial
 	 */
 	public Double getAliquotaICMSST()
 	{
-		return aliquotaICMSST;
+		return this.aliquotaICMSST;
 	}
 
 	/**
@@ -1066,15 +1064,15 @@ public class Comercial
 	/**
 	 * @return the frete
 	 */
-	public BigDecimal getFrete()
+	public Double getFrete()
 	{
-		return frete;
+		return this.frete;
 	}
 
 	/**
 	 * @param frete the frete to set
 	 */
-	public void setFrete(BigDecimal frete)
+	public void setFrete(Double frete)
 	{
 		this.frete = frete;
 	}
@@ -1082,15 +1080,15 @@ public class Comercial
 	/**
 	 * @return the seguro
 	 */
-	public BigDecimal getSeguro()
+	public Double getSeguro()
 	{
-		return seguro;
+		return this.seguro;
 	}
 
 	/**
 	 * @param seguro the seguro to set
 	 */
-	public void setSeguro(BigDecimal seguro)
+	public void setSeguro(Double seguro)
 	{
 		this.seguro = seguro;
 	}
@@ -1098,15 +1096,15 @@ public class Comercial
 	/**
 	 * @return the outrasDespesas
 	 */
-	public BigDecimal getOutrasDespesas()
+	public Double getOutrasDespesas()
 	{
-		return outrasDespesas;
+		return this.outrasDespesas;
 	}
 
 	/**
 	 * @param outrasDespesas the outrasDespesas to set
 	 */
-	public void setOutrasDespesas(BigDecimal outrasDespesas)
+	public void setOutrasDespesas(Double outrasDespesas)
 	{
 		this.outrasDespesas = outrasDespesas;
 	}
@@ -1114,15 +1112,15 @@ public class Comercial
 	/**
 	 * @return the custo
 	 */
-	public BigDecimal getCusto()
+	public Double getCusto()
 	{
-		return custo;
+		return this.custo;
 	}
 
 	/**
 	 * @param custo the custo to set
 	 */
-	public void setCusto(BigDecimal custo)
+	public void setCusto(Double custo)
 	{
 		this.custo = custo;
 	}

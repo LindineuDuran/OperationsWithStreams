@@ -27,21 +27,21 @@ public class ComercialServiceImpl implements ComercialService
 		// Locale eua = Locale.US;
 		// NumberFormat formatadorNumerico = NumberFormat.getNumberInstance(eua);
 
-		return com.getOperacao() + ";" + com.getParticipante() + ";" + com.getCFOP() + ";" + com.getModelo() + ";"
-				+ com.getSituacao() + ";" + com.getDataMovimento() + ";"
-				+ formatadorNumerico.format(com.getValorTotalNFe()) + ";" + com.getOperacao() + ";" + com.getEmissao()
-				+ ";" + com.getCstICMS() + ";" + formatadorNumerico.format(com.getAliquotaICMS()) + ";"
-				+ com.getModFrete() + ";" + com.getSufixoCFOP() + ";" + com.getSatECF() + ";" + 1 + ";"
-				+ formatadorNumerico.format(com.getValorTotal()) + ";" + formatadorNumerico.format(com.getDesconto())
-				+ ";" + formatadorNumerico.format(com.getValorICMS()) + ";"
-				+ formatadorNumerico.format(com.getValorIPI()) + ";" + formatadorNumerico.format(com.getValorPIS())
-				+ ";" + formatadorNumerico.format(com.getValorCOFINS()) + ";"
-				+ formatadorNumerico.format(com.getValorICMSST()) + ";" + formatadorNumerico.format(com.getValorPISST())
-				+ ";" + formatadorNumerico.format(com.getValorCOFINSST()) + ";"
-				+ formatadorNumerico.format(com.getBaseICMS()) + ";" + formatadorNumerico.format(com.getBaseICMSST())
-				+ ";" + formatadorNumerico.format(com.getRedBaseCalculo()) + ";"
-				+ formatadorNumerico.format(com.getFrete()) + ";" + formatadorNumerico.format(com.getSeguro()) + ";"
-				+ formatadorNumerico.format(com.getOutrasDespesas());
+		return com.getOrganizacao() + ";" + com.getParticipante() + ";" + com.getCFOP() + ";" + com.getModelo() + ";"
+		+ com.getSituacao() + ";" + com.getDataMovimento() + ";"
+		+ formatadorNumerico.format(com.getValorTotalNFe()) + ";" + com.getOperacao() + ";" + com.getEmissao()
+		+ ";" + com.getCstICMS() + ";" + formatadorNumerico.format(com.getAliquotaICMS()) + ";"
+		+ com.getModFrete() + ";" + com.getSufixoCFOP() + ";" + com.getSatECF() + ";" + 1 + ";"
+		+ formatadorNumerico.format(com.getValorTotal()) + ";" + formatadorNumerico.format(com.getDesconto())
+		+ ";" + formatadorNumerico.format(com.getValorICMS()) + ";"
+		+ formatadorNumerico.format(com.getValorIPI()) + ";" + formatadorNumerico.format(com.getValorPIS())
+		+ ";" + formatadorNumerico.format(com.getValorCOFINS()) + ";"
+		+ formatadorNumerico.format(com.getValorICMSST()) + ";" + formatadorNumerico.format(com.getValorPISST())
+		+ ";" + formatadorNumerico.format(com.getValorCOFINSST()) + ";"
+		+ formatadorNumerico.format(com.getBaseICMS()) + ";" + formatadorNumerico.format(com.getBaseICMSST())
+		+ ";" + formatadorNumerico.format(com.getRedBaseCalculo()) + ";"
+		+ formatadorNumerico.format(com.getFrete()) + ";" + formatadorNumerico.format(com.getSeguro()) + ";"
+		+ formatadorNumerico.format(com.getOutrasDespesas());
 	}
 
 }

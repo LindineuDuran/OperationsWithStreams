@@ -1,13 +1,12 @@
 package com.lduran.streamsoperations.util;
 
-import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import org.jooq.lambda.Seq;
 import org.jooq.lambda.tuple.Tuple;
-import org.jooq.lambda.tuple.Tuple6;
+import org.jooq.lambda.tuple.Tuple10;
 import org.springframework.stereotype.Component;
 
 import com.lduran.streamsoperations.model.*;
@@ -233,7 +232,7 @@ public class SQLInStream
 		com.setParticipante(c420Temp.getParticipante());
 		com.setCFOP(c490Temp.getCFOP());
 		com.setDataMovimento(c420Temp.getDataMovimento());
-		com.setValorTotalNFe(c420Temp.getValorTotalNFe());
+		com.setValorTotalNFe(c420Temp.getValorTotalNFe().doubleValue());
 		com.setOperacao(c420Temp.getOperacao());
 		com.setEmissao(c420Temp.getEmissao());
 		com.setCstICMS(c490Temp.getCstICMS());
@@ -241,9 +240,9 @@ public class SQLInStream
 		com.setSufixoCFOP(c490Temp.getSufixoCFOP());
 		com.setSatECF(c420Temp.getSatECF());
 		com.setQuantidade(c420Temp.getQuantidade());
-		com.setValorTotal(c420Temp.getValorTotal());
-		com.setValorICMS(c490Temp.getValorICMS());
-		com.setBaseICMS(c490Temp.getBaseICMS());
+		com.setValorTotal(c420Temp.getValorTotal().doubleValue());
+		com.setValorICMS(c490Temp.getValorICMS().doubleValue());
+		com.setBaseICMS(c490Temp.getBaseICMS().doubleValue());
 		com.setAliquotaICMS(c490Temp.getAliquotaICMS());
 
 		return com;
@@ -270,6 +269,21 @@ public class SQLInStream
 		return listagem;
 	}
 
+	public List<Comercial> leftOuterJoinJooqRetornaString(List<C420> objectListC420, List<C490> objectListC490)
+	{
+		Seq<C420> s1 = Seq.seq(objectListC420);
+		Seq<C490> s2 = Seq.seq(objectListC490);
+
+		List<Comercial> listagem = s1
+				.leftOuterJoin(s2,
+						(t, u) -> Objects.equals(t.getDataMovimento(), u.getDataMovimento())
+								&& Objects.equals(t.getValorTotal(), u.getValorTotal())
+								&& Objects.equals(t.getValorTotalNFe(), u.getValorTotalNFe()))
+				.map(t -> this.tupleRetornaComercial(t.v1, t.v2)).toList();
+
+		return listagem;
+	}
+
 	/**
 	 * Example of Aggregation of the Quantity Column, of type Double, in the
 	 * Organization Column
@@ -284,19 +298,6 @@ public class SQLInStream
 	}
 
 	/**
-	 * Simple Totalization of a BigDecimal Type Column
-	 *
-	 * @param lstComercial
-	 * @return
-	 */
-	public BigDecimal totalValor(List<Comercial> lstComercial)
-	{
-		BigDecimal sum = lstComercial.stream().map(Comercial::getValorTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
-
-		return sum;
-	}
-
-	/**
 	 * Example of Aggregating a BigDecimal Column into Two Columns
 	 *
 	 * @param lstComercial
@@ -307,7 +308,7 @@ public class SQLInStream
 		List<ComercGroupBy> listagem = lstComercial.stream()
 				.collect(Collectors.groupingBy(Comercial::getOrganizacao,
 						Collectors.groupingBy(Comercial::getDataMovimento,
-								Collectors.reducing(BigDecimal.ZERO, Comercial::getValorTotal, BigDecimal::add))))
+								Collectors.summingDouble(Comercial::getValorTotal))))
 				.entrySet().stream()
 				.flatMap(e1 -> e1.getValue().entrySet().stream()
 						.map(e2 -> new ComercGroupBy(e1.getKey(), e2.getKey(), e2.getValue())))
@@ -317,50 +318,68 @@ public class SQLInStream
 	}
 
 	/**
-	 * returns the result of MultiColumnAgregation(List<Comercial>)
+	 * Tupla das colunas do GroupBy
 	 *
 	 * @param organizacao
 	 * @param participante
 	 * @param CFOP
+	 * @param modelo
 	 * @param situacao
 	 * @param dataMovimento
+	 * @param operacao
+	 * @param emissao
+	 * @param cstICMS
+	 * @param aliquotaICMS
+	 * @param modFrete
+	 * @param satECF
 	 * @return
 	 */
-	private Object tuple(String organizacao, String participante, String CFOP, String situacao, String dataMovimento)
+	private Object tupleBigger(String organizacao, String participante, String CFOP, String modelo, String situacao,
+			String dataMovimento, String operacao, String emissao, String cstICMS, Double aliquotaICMS, String modFrete,
+			String satECF)
 	{
-		return organizacao + ";" + participante + ";" + CFOP + ";" + situacao + ";" + dataMovimento;
+		return organizacao + ";" + participante + ";" + CFOP + ";" + modelo + ";" + situacao + ";" + dataMovimento + ";"
+				+ operacao + ";" + emissao + ";" + cstICMS + ";" + aliquotaICMS + ";" + modFrete + ";" + satECF;
 	}
 
 	/**
-	 * Multiple Column Aggregation with BigDecimal Values
+	 * Multiple Column Aggregation with Double Values
 	 *
 	 * @param lstComercial
 	 * @return
 	 */
-	public Map<Object, Tuple6<BigDecimal, BigDecimal, BigDecimal, BigDecimal, BigDecimal, BigDecimal>> MultiColumnAgregation(
-			List<Comercial> lstComercial)
+	public List<String> MultiColumnAgregation(List<Comercial> lstComercial)
 	{
-		Map<Object, Tuple6<BigDecimal, BigDecimal, BigDecimal, BigDecimal, BigDecimal, BigDecimal>> map =
+		Map<Object, Tuple10<Double, Double, Double, Double, Double, Double, Double, Double, Double, Double>> map =
 
 				// Seq is like a Stream, but sequential only, and with more features
 				Seq.seq(lstComercial)
 
 						// Seq.groupBy() is just short for Stream.collect(Collectors.groupingBy(...))
-						.groupBy(
-								a -> tuple(a.getOrganizacao(), a.getParticipante(), a.getCFOP(), a.getSituacao(),
-										a.getDataMovimento()),
+						.groupBy(a -> this.tupleBigger(a.getOrganizacao(), a.getParticipante(), a.getCFOP(),
+								a.getModelo(), a.getSituacao(), a.getDataMovimento(), a.getOperacao(), a.getEmissao(),
+								a.getCstICMS(), a.getAliquotaICMS(), a.getModFrete(), a.getSatECF()),
 
 								// ... because once you have tuples, why not add tuple-collectors?
-								Tuple.collectors(
-										Collectors.reducing(BigDecimal.ZERO, Comercial::getValorTotal, BigDecimal::add),
-										Collectors.reducing(BigDecimal.ZERO, Comercial::getDesconto, BigDecimal::add),
-										Collectors.reducing(BigDecimal.ZERO, Comercial::getValorICMS, BigDecimal::add),
-										Collectors.reducing(BigDecimal.ZERO, Comercial::getValorIPI, BigDecimal::add),
-										Collectors.reducing(BigDecimal.ZERO, Comercial::getValorPIS, BigDecimal::add),
-										Collectors.reducing(BigDecimal.ZERO, Comercial::getValorCOFINS,
-												BigDecimal::add))
+								Tuple.collectors(Collectors.summingDouble(Comercial::getValorTotal),
+										Collectors.summingDouble(Comercial::getDesconto),
+										Collectors.summingDouble(Comercial::getValorICMS),
+										Collectors.summingDouble(Comercial::getValorIPI),
+										Collectors.summingDouble(Comercial::getValorPIS),
+										Collectors.summingDouble(Comercial::getValorCOFINS),
+										Collectors.summingDouble(Comercial::getValorICMSST),
+										Collectors.summingDouble(Comercial::getValorPISST),
+										Collectors.summingDouble(Comercial::getValorCOFINSST),
+										Collectors.summingDouble(Comercial::getBaseICMS)));
 
-						);
-		return map;
+		List<String> lstResult = map.entrySet().stream().map(m -> m.getKey() + ";" + m.getValue())
+				.collect(Collectors.toList());
+		lstResult = lstResult.stream().map(line -> line.replaceAll(", ", ";")).collect(Collectors.toList());
+		lstResult = lstResult.stream().map(line -> line.replaceAll("\\(", "")).collect(Collectors.toList());
+		lstResult = lstResult.stream().map(line -> line.replaceAll("\\)", "")).collect(Collectors.toList());
+		lstResult.add(0,
+				"IdOrganizacao;IdParticipante;IdCfop;IdModelo;IdSituacao;DataDoMovimento;Operacao;Emissao;CstICMS;AliquotaIcms;TipoDoFrete;NumeroSatEcf;TotalDoItem;ValorDesconto;ValorICMS;ValorIPI;ValorPIS;ValorCOFINS;ValorICMSSt;ValorPISSt;ValorCOFINSSt;BaseDeCalculoICMS;BaseDeCalculoICMSST;ValorDaReducaoDaBaseDeCalculo;ValorFrete;ValorSeguro;ValorOutrasDespesasAcessorias");
+
+		return lstResult;
 	}
 }

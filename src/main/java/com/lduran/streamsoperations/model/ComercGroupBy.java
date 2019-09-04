@@ -1,19 +1,17 @@
 package com.lduran.streamsoperations.model;
 
-import java.math.BigDecimal;
-
 public class ComercGroupBy
 {
 	private String organizacao = "";
 	private String dataMovimento = "";
-	private BigDecimal valorTotal = new BigDecimal(0);
+	private Double valorTotal = 0.0;
 
 	/**
 	 * @param organizacao
 	 * @param dataMovimento
 	 * @param valorTotal
 	 */
-	public ComercGroupBy(String organizacao, String dataMovimento, BigDecimal valorTotal)
+	public ComercGroupBy(String organizacao, String dataMovimento, Double valorTotal)
 	{
 		this.organizacao = organizacao;
 		this.dataMovimento = dataMovimento;
@@ -39,7 +37,7 @@ public class ComercGroupBy
 	/**
 	 * @return the valorTotal
 	 */
-	public BigDecimal getValorTotal()
+	public Double getValorTotal()
 	{
 		return this.valorTotal;
 	}
