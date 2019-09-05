@@ -37,7 +37,7 @@ public class ProcessCenter
 	ListHandler lst;
 
 	// remember to change the file path
-	String Diretory = "C:\\GitHub\\OperationsWithStreams\\";
+	private final String DIRETORY = "C:\\GitHub\\TrataInfoPolimorph\\";
 
 	@Bean
 	public void start()
@@ -48,7 +48,7 @@ public class ProcessCenter
 		List<String> fileContent = new LinkedList<>();
 		try
 		{
-			fileContent = this.fh.readFile(Diretory + "C420.txt");
+			fileContent = this.fh.readFile(DIRETORY + "C420.txt");
 		}
 		catch (IOException e)
 		{
@@ -69,7 +69,7 @@ public class ProcessCenter
 		// =========================
 		try
 		{
-			fileContent = this.fh.readFile(Diretory + "C490.txt");
+			fileContent = this.fh.readFile(DIRETORY + "C490.txt");
 		}
 		catch (IOException e)
 		{
@@ -114,7 +114,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
-			this.fh.writeStream(Diretory + "ResultadoC490Processada.txt", lstResult);
+			this.fh.writeStream(DIRETORY + "ResultadoC490Processada.txt", lstResult);
 		}
 		catch (IOException e)
 		{
@@ -149,7 +149,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
-			this.fh.writeStream(Diretory + "ResultadoC420xC490.txt", lstResult);
+			this.fh.writeStream(DIRETORY + "ResultadoC420xC490.txt", lstResult);
 		}
 		catch (IOException e)
 		{
@@ -159,13 +159,14 @@ public class ProcessCenter
 
 		// ========================================================================
 		// Example of Left Outter Join using 2 streams() generating List<Comercial>
+		// Stream()
 		// ========================================================================
-		List<Comercial> lstComercial = this.sql.leftOuterJoinRetornaComercial(objectListC420, objectListC490);
+		List<Comercial> lstComercialStream = this.sql.leftOuterJoinRetornaComercial(objectListC420, objectListC490);
 
-		// ==========================================================================================
-		// Example of Left Outter Join using 2 streams() generating List<Comercial> with
-		// JOOQ Library
-		// ==========================================================================================
+		// ========================================================================
+		// Example of Left Outter Join using 2 streams() generating List<Comercial>
+		// JOOQ
+		// ========================================================================
 		List<Comercial> lstComercialJOOQ = this.sql.leftOuterJoinJooqRetornaString(objectListC420, objectListC490);
 
 		// ==========================
@@ -179,7 +180,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
-			this.fh.writeStream(Diretory + "ResultadoC420xC490_Objeto.txt", lstResult);
+			this.fh.writeStream(DIRETORY + "ResultadoC420xC490_Objeto.txt", lstResult);
 		}
 		catch (IOException e)
 		{
@@ -190,12 +191,12 @@ public class ProcessCenter
 		// Example of Aggregation of the Quantity Column, of type Double, in the
 		// Organization Column
 		// =====================================================================
-		Map<String, Double> teste = this.sql.totalQuantidadeForOrganizacao(lstComercial);
+		Map<String, Double> teste = this.sql.totalQuantidadeForOrganizacao(lstComercialJOOQ);
 
 		// ===========================================================
 		// Example of Aggregating a BigDecimal Column into Two Columns
 		// ===========================================================
-		List<ComercGroupBy> listagemGroupBy = this.sql.totalValorForOrgaAndDatMov(lstComercial);
+		List<ComercGroupBy> listagemGroupBy = this.sql.totalValorForOrgaAndDatMov(lstComercialJOOQ);
 
 		// ==========================
 		// Format the report like CSV
@@ -208,7 +209,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
-			this.fh.writeStream(Diretory + "ResultadoGroupBy.txt", lstResult);
+			this.fh.writeStream(DIRETORY + "ResultadoGroupBy.txt", lstResult);
 		}
 		catch (IOException e)
 		{
@@ -219,14 +220,14 @@ public class ProcessCenter
 		// More powerful aggregation, totaling multiple columns, grouping into several
 		// other columns
 		// ==========================================================================================
-		lstResult = this.sql.MultiColumnAgregation(lstComercial);
+		lstResult = this.sql.MultiColumnAgregation(lstComercialJOOQ);
 
 		// ==================================
 		// Saves the lstResult in a text file
 		// ==================================
 		try
 		{
-			this.fh.writeStream(Diretory + "ResultadoMultiColumnAgregation.txt", lstResult);
+			this.fh.writeStream(DIRETORY + "ResultadoMultiColumnAgregation.txt", lstResult);
 		}
 		catch (IOException e)
 		{
