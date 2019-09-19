@@ -1,5 +1,7 @@
 package com.lduran.streamsoperations.model;
 
+import java.math.BigDecimal;
+
 public class Comercial
 {
 	private String organizacao = "";
@@ -68,6 +70,7 @@ public class Comercial
 	private Double seguro = 0.0;
 	private Double outrasDespesas = 0.0;
 	private Double custo = 0.0;
+	private BigDecimal valorTotalBig = new BigDecimal(0.0);
 
 	/**
 	 * @return the organizacao
@@ -1123,6 +1126,22 @@ public class Comercial
 	public void setCusto(Double custo)
 	{
 		this.custo = custo;
+	}
+
+	/**
+	 * @return the valorTotalBig
+	 */
+	public BigDecimal getValorTotalBig()
+	{
+		return valorTotalBig;
+	}
+
+	/**
+	 * @param valorTotalBig the valorTotalBig to set
+	 */
+	public void setValorTotalBig(BigDecimal valorTotalBig)
+	{
+		this.valorTotalBig = valorTotalBig;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.lduran.streamsoperations.features;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import com.lduran.streamsoperations.model.*;
 import com.lduran.streamsoperations.service.BuildService;
 import com.lduran.streamsoperations.util.*;
 
-@Component
 /**
  * Common SQL Clauses and Their Equivalents in Java 8 Streams
  * https://blog.jooq.org/2015/08/13/common-sql-clauses-and-their-equivalents-in-java-8-streams/
@@ -22,6 +22,7 @@ import com.lduran.streamsoperations.util.*;
  * @author lindineu.duran
  *
  */
+@Component
 public class ProcessCenter
 {
 	@Autowired
@@ -37,7 +38,7 @@ public class ProcessCenter
 	ListHandler lst;
 
 	// remember to change the file path
-	private final String DIRETORY = "C:\\GitHub\\TrataInfoPolimorph\\";
+	private final String DIRETORY = "C:\\GitHub\\OperationsWithStreams\\";
 
 	@Bean
 	public void start()
@@ -48,6 +49,7 @@ public class ProcessCenter
 		List<String> fileContent = new LinkedList<>();
 		try
 		{
+			// remember to change the file path
 			fileContent = this.fh.readFile(DIRETORY + "C420.txt");
 		}
 		catch (IOException e)
@@ -69,6 +71,7 @@ public class ProcessCenter
 		// =========================
 		try
 		{
+			// remember to change the file path
 			fileContent = this.fh.readFile(DIRETORY + "C490.txt");
 		}
 		catch (IOException e)
@@ -114,6 +117,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
+			// remember to change the file path
 			this.fh.writeStream(DIRETORY + "ResultadoC490Processada.txt", lstResult);
 		}
 		catch (IOException e)
@@ -149,6 +153,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
+			// remember to change the file path
 			this.fh.writeStream(DIRETORY + "ResultadoC420xC490.txt", lstResult);
 		}
 		catch (IOException e)
@@ -159,20 +164,16 @@ public class ProcessCenter
 
 		// ========================================================================
 		// Example of Left Outter Join using 2 streams() generating List<Comercial>
-		// Stream()
 		// ========================================================================
-		List<Comercial> lstComercialStream = this.sql.leftOuterJoinRetornaComercial(objectListC420, objectListC490);
+		// List<Comercial> lstComercial =
+		// this.sql.leftOuterJoinRetornaComercial(objectListC420, objectListC490);
 
-		// ========================================================================
-		// Example of Left Outter Join using 2 streams() generating List<Comercial>
-		// JOOQ
-		// ========================================================================
-		List<Comercial> lstComercialJOOQ = this.sql.leftOuterJoinJooqRetornaString(objectListC420, objectListC490);
+		List<Comercial> lstComercial = this.sql.leftOuterJoinJooqRetornaString(objectListC420, objectListC490);
 
 		// ==========================
 		// Format the report like CSV
 		// ==========================
-		lstResult = this.lst.formataRelatorioComercial(lstComercialJOOQ);
+		lstResult = this.lst.formataRelatorioComercial(lstComercial);
 		this.lst.imprimeLista(lstResult);
 
 		// ==================================
@@ -180,6 +181,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
+			// remember to change the file path
 			this.fh.writeStream(DIRETORY + "ResultadoC420xC490_Objeto.txt", lstResult);
 		}
 		catch (IOException e)
@@ -191,12 +193,17 @@ public class ProcessCenter
 		// Example of Aggregation of the Quantity Column, of type Double, in the
 		// Organization Column
 		// =====================================================================
-		Map<String, Double> teste = this.sql.totalQuantidadeForOrganizacao(lstComercialJOOQ);
+		Map<String, Double> teste = this.sql.totalQuantidadeForOrganizacao(lstComercial);
+
+		// ===============================================
+		// Simple Totalization of a BigDecimal Type Column
+		// ===============================================
+		BigDecimal sum = this.sql.totalValor(lstComercial);
 
 		// ===========================================================
 		// Example of Aggregating a BigDecimal Column into Two Columns
 		// ===========================================================
-		List<ComercGroupBy> listagemGroupBy = this.sql.totalValorForOrgaAndDatMov(lstComercialJOOQ);
+		List<ComercGroupBy> listagemGroupBy = this.sql.totalValorForOrgaAndDatMov(lstComercial);
 
 		// ==========================
 		// Format the report like CSV
@@ -209,6 +216,7 @@ public class ProcessCenter
 		// ==================================
 		try
 		{
+			// remember to change the file path
 			this.fh.writeStream(DIRETORY + "ResultadoGroupBy.txt", lstResult);
 		}
 		catch (IOException e)
@@ -220,13 +228,14 @@ public class ProcessCenter
 		// More powerful aggregation, totaling multiple columns, grouping into several
 		// other columns
 		// ==========================================================================================
-		lstResult = this.sql.MultiColumnAgregation(lstComercialJOOQ);
+		lstResult = this.sql.MultiColumnAgregation(lstComercial);
 
 		// ==================================
 		// Saves the lstResult in a text file
 		// ==================================
 		try
 		{
+			// remember to change the file path
 			this.fh.writeStream(DIRETORY + "ResultadoMultiColumnAgregation.txt", lstResult);
 		}
 		catch (IOException e)

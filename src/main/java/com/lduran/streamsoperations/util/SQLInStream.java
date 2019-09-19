@@ -1,5 +1,6 @@
 package com.lduran.streamsoperations.util;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -298,6 +299,20 @@ public class SQLInStream
 	}
 
 	/**
+	 * Simple Totalization of a BigDecimal Type Column
+	 *
+	 * @param lstComercial
+	 * @return
+	 */
+	public BigDecimal totalValor(List<Comercial> lstComercial)
+	{
+		BigDecimal sum = lstComercial.stream().map(Comercial::getValorTotalBig).reduce(BigDecimal.ZERO,
+				BigDecimal::add);
+
+		return sum;
+	}
+
+	/**
 	 * Example of Aggregating a BigDecimal Column into Two Columns
 	 *
 	 * @param lstComercial
@@ -370,7 +385,15 @@ public class SQLInStream
 										Collectors.summingDouble(Comercial::getValorICMSST),
 										Collectors.summingDouble(Comercial::getValorPISST),
 										Collectors.summingDouble(Comercial::getValorCOFINSST),
-										Collectors.summingDouble(Comercial::getBaseICMS)));
+										Collectors.summingDouble(Comercial::getBaseICMS)/**
+																						 * ,
+																						 * Collectors.summingDouble(Comercial::getBaseICMSST),
+																						 * Collectors.summingDouble(Comercial::getRedBaseCalculo),
+																						 * Collectors.summingDouble(Comercial::getFrete),
+																						 * Collectors.summingDouble(Comercial::getSeguro),
+																						 * Collectors.summingDouble(Comercial::getOutrasDespesas)
+																						 **/
+								));
 
 		List<String> lstResult = map.entrySet().stream().map(m -> m.getKey() + ";" + m.getValue())
 				.collect(Collectors.toList());
